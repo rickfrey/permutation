@@ -23,7 +23,8 @@ void go(int offset, int k) {
   }
   for (int i = offset; i <= people.size() - k; ++i) {       // 3. Schleife von 0 bis (n-k)
     combination.push_back(people[i]);                       // 4. Vektor "combination": i-te Stelle wird mit people[i] gefüllt
-    cout<<"Test: people[i]("<<i<<")= "<<people[i]<<endl;
+    cout<<"Test: people["<<i<<"]= "<<people[i]<<endl;
+    cout<<"Test: combination["<<i<<"]= "<<combination[i]<<endl;
     go(i+1, k-1);
     combination.pop_back(); // pop_back verkleinert Vektor um eine Stelle
   }
