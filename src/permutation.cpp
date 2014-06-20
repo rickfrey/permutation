@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <vector>
 
 using namespace std;
@@ -25,8 +25,8 @@ void go(int offset, int k) {
   }
   for (int i = offset; i <= people.size() - k; ++i) {       // 3. Schleife von 0 bis (n-k)
     combination.push_back(people[i]);                       // 4. Vektor "combination": i-te Stelle wird mit people[i] gefüllt
-    cout<<"Test: people["<<i<<"]= "<<people[i]<<endl;
-    cout<<"Test: combination["<<i<<"]= "<<combination[i]<<endl;
+                                                        //cout<<"Test: people["<<i<<"]= "<<people[i]<<endl;
+                                                        //cout<<"Test: combination["<<i<<"]= "<<combination[i]<<endl;
     go(i+1, k-1);
     combination.pop_back(); // pop_back verkleinert Vektor um eine Stelle
   }
@@ -39,4 +39,77 @@ int main() {
   go(0, k);                                                 // 2. Aufruf der Funktion go mit k als Parameter
 
   return 0;
+}
+*/
+
+#include <vector>
+#include <iostream>
+#include <algorithm>
+
+// http://stackoverflow.com/questions/11483060/stdnext-permutation-implementation-explanation
+
+using namespace std;
+
+template<typename It>
+bool next_permutation(It begin, It end)
+{
+        if (begin == end)
+                return false;
+
+        It i = begin;
+        ++i;
+        if (i == end)
+                return false;
+
+        i = end;
+        --i;
+
+        while (true)
+        {
+                It j = i;
+                --i;
+
+                if (*i < *j)
+                {
+                        It k = end;
+
+                        while (!(*i < *--k))
+                                /* pass */;
+
+                        iter_swap(i, k);
+                        reverse(j, end);
+                        return true;
+                }
+
+                if (i == begin)
+                {
+                        reverse(begin, end);
+                        return false;
+                }
+        }
+}
+
+int main()
+{
+        vector<int> v;// = { 1, 2, 3, 4 };
+        v.push_back(1);
+        v.push_back(2);
+        v.push_back(3);
+        v.push_back(4);
+        v.push_back(5);
+        int k=4;
+        int count=0;
+        do
+        {
+                for (int i = 0; i < k; i++)
+                {
+                        cout << v[i] << " ";
+
+                }
+                //int count=0;
+                //count++;
+                cout << endl;
+                //count++;
+        }
+        while (::next_permutation(v.begin(), v.end()));
 }
