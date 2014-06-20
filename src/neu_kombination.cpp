@@ -6,10 +6,12 @@ using namespace std;
 // Es gibt n Menschen, ausgegeben werden alle möglichen Kombinationen von k der gesamten Menschen (k aus n)
 // Ich muss für jede Kombination alle möglichen Permutationen durchspielen!
 
+// QUELLE: http://stackoverflow.com/questions/12991758/creating-all-possible-k-combinations-of-n-items-in-c
+
 vector<int> people;
 vector<int> combination;
 
-void pretty_print(const vector<int>& v) {
+void pretty_print(const vector<int>& v) {                   // Hier irgendwas mit std::next_permutation (#include <algorithm>) programmieren, um alle Reihenfolgen zu ermitteln
   static int count = 0;
   cout << "combination no " << (++count) << ": [ ";
   for (int i = 0; i < v.size(); ++i) { cout << v[i] << " "; }
