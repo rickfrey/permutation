@@ -158,6 +158,8 @@ int main()
 #include<iostream>
 #include<vector>
 #include<algorithm>
+
+// http://forum.codecall.net/topic/64715-how-to-generate-all-permutations/
 using namespace std;
 
 vector<int> vec;
