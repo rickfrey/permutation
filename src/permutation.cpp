@@ -41,7 +41,7 @@ int main() {
   return 0;
 }
 */
-
+/*
 #include <vector>
 #include <iostream>
 #include <algorithm>
@@ -74,7 +74,7 @@ bool next_permutation(It begin, It end)
                         It k = end;
 
                         while (!(*i < *--k))
-                                /* pass */;
+                                /* pass *//*;
 
                         iter_swap(i, k);
                         reverse(j, end);
@@ -97,7 +97,7 @@ int main()
         v.push_back(3);
         v.push_back(4);
         v.push_back(5);
-        int k=4;
+        int k=3;
         int count=0;
         do
         {
@@ -112,4 +112,82 @@ int main()
                 //count++;
         }
         while (::next_permutation(v.begin(), v.end()));
+}
+*/
+/*
+#include <algorithm>
+#include <string>
+#include <vector>
+#include <iostream>
+
+template<class T>
+void print(const std::vector<T> &vec)
+{
+    for (typename std::vector<T>::const_iterator i = vec.begin(); i != vec.end(); ++i)
+    {
+        std::cout << *i;
+        if ((i + 1) != vec.end())
+            std::cout << ",";
+    }
+    std::cout << std::endl;
+}
+
+int main()
+{
+    //Permutations for strings
+    std::string example("Hello");
+    std::sort(example.begin(), example.end());
+    do {
+        std::cout << example << '\n';
+    } while (std::next_permutation(example.begin(), example.end()));
+
+    // And for vectors
+    std::vector<int> another;
+    another.push_back(1234);
+    another.push_back(4321);
+    another.push_back(1234);
+    another.push_back(9999);
+
+    std::sort(another.begin(), another.end());
+    do {
+        print(another);
+    } while (std::next_permutation(another.begin(), another.end()));
+
+    return 0;
+}*/
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+vector<int> vec;
+
+void print()
+{
+    //for(int i=0; i<vec.size(); i++)
+    //    cout << vec[i] << " ";
+    for(vector<int>::iterator it = vec.begin(); it != vec.end(); it++)
+        cout << *it << "\t";
+    cout << endl;
+}
+
+int main()
+{
+    vec.push_back(2);
+    vec.push_back(4);
+    vec.push_back(5);
+
+    for(int i = 1; i <= vec.size() ; i++) {
+        //vec.push_back(i);
+        cout << vec[i-1] << "\t";
+    }
+
+    cout << endl;
+
+    while(next_permutation(vec.begin(), vec.end()) ){
+        print();
+        // do some processing on vec
+    }
+
+    return 0;
 }
